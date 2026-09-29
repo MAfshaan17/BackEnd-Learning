@@ -57,13 +57,16 @@ app.get("/", function (req, res) {
 
 // get is used to handle GET requests in express.js. 
 // It is used to define a route for handling GET requests. It takes two arguments: the first argument is the route path, and the second argument is a callback function that will be executed when the route is matched.
+//creating an error in express.js. It is used to create an error object that can be passed to the next middleware function in the stack.
+
+
 app.get("/about", function (req, res) {
-    return next(new Error("This is an error")); 
+    return next(new Error("This is an error")); // will display in console
 })  
 
 app.use(function(err, req, res, next) {
     console.error(err.stack);
-    res.status(500).send('Something went wrong!');
+    res.status(500).send('Something went wrong!'); // will display in frontend
   })
 
 app.listen(3000)
