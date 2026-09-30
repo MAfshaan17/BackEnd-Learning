@@ -39,6 +39,7 @@ app.listen(3000);
 //  It is a function which has access to the request object, response object and next function in the application’s request-response cycle.
 //  It can execute any code, make changes to the request and response objects, end the request-response cycle, or call the next middleware function in the stack.
 
+/*
 app.use(function (req, res, next) {
     console.log("This is middleware");
     next(); // next() is used to pass control to the next middleware function in the stack. If we don't call next(), the request will be left hanging and the client will not receive a response.
@@ -54,11 +55,12 @@ app.use(function (req, res, next) {
 app.get("/", function (req, res) {
     res.send(" hi i am afshaan");
 })   
+*/
 
 // get is used to handle GET requests in express.js. 
 // It is used to define a route for handling GET requests. It takes two arguments: the first argument is the route path, and the second argument is a callback function that will be executed when the route is matched.
 //creating an error in express.js. It is used to create an error object that can be passed to the next middleware function in the stack.
-
+/*
 
 app.get("/about", function (req, res) {
     return next(new Error("This is an error")); // will display in console
@@ -70,4 +72,6 @@ app.use(function(err, req, res, next) {
   })
 
 app.listen(3000)
+            */
+
 

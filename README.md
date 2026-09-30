@@ -1,1 +1,1 @@
-Learning Backend aspecialy Node js and other backend things
+### Trying to boost my knowledge in backend by learning,practicinga dn implementing things to become a better programmer in the world of ai 
