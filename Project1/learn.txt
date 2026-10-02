@@ -1,0 +1,29 @@
+/* 
+We will create a mini project on note full backend 
+1. init a project with npm
+2. install express
+3. Dynamic routing 
+    It is how to get data from frontend at backend route
+    setting up:
+
+     parser
+     ys for ys parser
+     public static files
+*/
+
+// linking css file to ejs file
+// setting up ejs template engine
+// linking js file to ejs file
+
+// Dynamic Routing 
+/*  for example
+ /author/afs
+ /author/shan
+ /author/ana
+
+ steps:
+ Go to browser
+ write url u want and enter
+ Create that Url route
+ send res 
+ If u want make dynamic then realise the part to made dynamic then put route mein: laga do 
