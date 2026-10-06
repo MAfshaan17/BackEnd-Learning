@@ -40,13 +40,15 @@
         <h1 class="text-white text-2xl tracking-tighter"> <a href="/files/<%= val %>">
             <%= val %>
         </h1>
-        <a
+        <div class=""flex w-full justify-between items-center mt-3">    
+         <a
             href="/files/<%= val %>"
             class="text-blue-500 hover:underline inline-block mt-3"
              > View more
-        </a>
-
-    </div>
+          </a>
+          <a class ="text-yellow-500 hover:underline inline-block mt-3" href="/files/<%= val %>/edit">Edit file name </a>
+        </div>
+     </div>
 
 <% }) %>
             <% } else { %>
