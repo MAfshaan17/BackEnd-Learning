@@ -1,0 +1,24 @@
+/*
+DATABASE - It stores data of the user
+
+types:
+1. SQL - stores data like a table 
+2.NoSQL - Stores in the form of objects
+
+We will be studying MongoDB 
+BACKEND - Application server + DATABASE
+ Application servers accepts request adnd routes and if data required it sends request to db to get data        
+
+ DATABASE is a broad cls it consists of collection and collection consists of documents.
+
+ DATABASE -> collection -> documents
+
+ CODE                         DATABASE
+ mongoose.connect      ->     Data base is created
+ model create          ->       collection
+ CREATE CODE           ->       Documents 
+
+ /*
+
+  DATABASE is simple collection of data which are stored inside it and which can be taken anytime
+  It can store anything - Strings, notes, images, voice notes, videos ..etc
