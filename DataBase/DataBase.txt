@@ -22,3 +22,6 @@ BACKEND - Application server + DATABASE
 
   DATABASE is simple collection of data which are stored inside it and which can be taken anytime
   It can store anything - Strings, notes, images, voice notes, videos ..etc
+
+  evrything is async here 
+  
