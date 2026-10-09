@@ -1,0 +1,19 @@
+Authentication and Authorization
+
+Authentication - who is the user before giving permission
+
+Authorization - permission to do what. Allow to made changes by if u have authority.
+
+Server forgets who u are after evry step and ask who are u -
+to sort this problem we have Cookies and Session 
+
+we sned request to server, it will attach a string and send it back to frontend adn whenever 
+we send another request from frontend that string will get attached to it and make our work easy
+
+we will learn:
+1. How to set Cookies
+2. Bcrypt use for setting password encryption and decryption
+3. what is JWT and how to store and access data in JWT 
+
+ genSalt - makes the password to a big string 
+           to hash a passowrd 
