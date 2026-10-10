@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 
 const cookieParser = require('cookie-parser');
 const path = require('path');
+const { emit } = require('cluster');
 
 app.set('view engine', 'ejs');
 app.use(express.json());
@@ -45,7 +46,14 @@ app.post('/login', async function (req, res){
   if(!user) return res.send("something went wrong");
 
     bcrypt.compare(req.body.password, user.password, function (err, result){
-      if(result) res.send("yes you can login ");
+      if(result){
+        let token = jwt.sign({email: user.email}, "ahsdas");
+        res.cookie("token", token)
+         res.send("yes you can login ");
+        }  
+       else { 
+        res.send(" Something went wrong");
+       }
     })
 });
 
