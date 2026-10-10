@@ -15,7 +15,7 @@ app.use(cookieParser);
 
 app.get('/', function(req, res){
     res.render('/index');
-})
+});
 
 app.post('/create', async function(req, res){
     let{username, email, password, age} = req.body;
@@ -35,6 +35,25 @@ app.post('/create', async function(req, res){
         })
     })
 });
+
+app.get("/login", function(req, res){
+  res.render('login');
+});
+
+app.post('/login', async function (req, res){
+  let user = await user.model.findOne({email: req.body.email})
+  if(!user) return res.send("something went wrong");
+
+    bcrypt.compare(req.body.password, user.password, function (err, result){
+      if(result) res.send("yes you can login ");
+    })
+});
+
+
+app.get('/logout', function(req, res){
+  res.cookie("token", "");
+  res.redirect("/");
+})
 
 app.listen(3000, () => {
     console.log("Server running on http://localhost:3000");
