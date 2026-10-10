@@ -1,36 +1,41 @@
-const cookieParser = require('cookie-parser');
-const express = require('express')
+const express = require('express');
 const app = express();
+const userModel = require("./models/user");
 const bcrypt =  require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-app.use(cookieParser())
+const cookieParser = require('cookie-parser');
+const path = require('path');
+
+app.set('view engine', 'ejs');
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser);
 
 app.get('/', function(req, res){
-    /* how to do encryption 
-     bcrypt.genSalt(10, function(err, salt){
-        bcrypt.hash("sanika", salt, function(err, hash){
-           console.log(hash);
+    res.render('/index');
+})
+
+app.post('/create', async function(req, res){
+    let{username, email, password, age} = req.body;
+
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(password, salt, async (err, hash) =>{
+           let createdUser = await userModel.create({
+                username,
+                email,
+                password: hash,
+                age
+           })
+        
+           let token = jwt.sign({email}, "ahsdas");
+           res.cookie("token", token);
+           res.send(createdUser);
         })
-     }) 
-    // res.cookie("name", "lam");  // set cookies
-    // res.send("done");
-    // to decrypt / compare
-    bcrypt.compare("sanika","$2b$10$.TrfDBrXfIZnR1/N5Jjp7.S5rXLU8SED9Iiu.H2l8.g0M2Q1z1sjG", function(err, result){
-        console.log(result)
-    }) */
-   let token = jwt.sign({email: "sham@gmail.com"}, "secret")
-   res.cookie("token",token); 
-   console.log(token);
-   res.send("done");
-})
+    })
+});
 
-
-app.get('/read', function(req, res){
-    // console.log(req.cookies.token);  //read cookies
-  let data = jwt.verify(req.cookies.token,"secret");
-    console.log(data);
-})
-
-
-app.listen(3000)
+app.listen(3000, () => {
+    console.log("Server running on http://localhost:3000");
+});
