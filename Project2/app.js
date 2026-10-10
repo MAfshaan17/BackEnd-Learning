@@ -13,16 +13,16 @@ app.get('/create', async function (req, res){
         age:20,
         email:"lan@gmail.com"
     });
-    res.send('user', userSchema);
+    res.send(user);
 })
 
 app.get("/post/create", async function(req, res){
    let post = await postModel.create({
-      postdata: "letsv do it",
-      user:"",
+      postdata: "let's do it",
+      user:"6aca9fd143571cd991f43cb9",
    })
 
-   let user = await userModel.findOne({_id: ""});
+   let user = await userModel.findOne({_id: "6aca9fd143571cd991f43cb9"});
    user.posts.push(post._id);
    await user.save();
    res.send(post, user);
