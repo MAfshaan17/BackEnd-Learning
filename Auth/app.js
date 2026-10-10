@@ -12,10 +12,10 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cookieParser);
+app.use(cookieParser());
 
-app.get('/', function(req, res){
-    res.render('/index');
+app.get('/', function(req, res) {
+    res.render('index');
 });
 
 app.post('/create', async function(req, res){
@@ -42,7 +42,7 @@ app.get("/login", function(req, res){
 });
 
 app.post('/login', async function (req, res){
-  let user = await user.model.findOne({email: req.body.email})
+ let user = await userModel.findOne({ email: req.body.email });
   if(!user) return res.send("something went wrong");
 
     bcrypt.compare(req.body.password, user.password, function (err, result){
@@ -63,6 +63,4 @@ app.get('/logout', function(req, res){
   res.redirect("/");
 })
 
-app.listen(3000, () => {
-    console.log("Server running on http://localhost:3000");
-});
+app.listen(3000);
