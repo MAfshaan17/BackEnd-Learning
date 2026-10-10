@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const userModel = require("./models/user");
-const userModel = require("./models/posts");
+const postModel = require("./models/post");
 
 app.get('/', function(req, res){
     res.send("jas");
